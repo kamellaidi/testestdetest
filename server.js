@@ -43,6 +43,67 @@ const db = {
       favorites: [8965, 11],
     },
     {
+      id: 10,
+      password: 'springfield',
+      email: 'homer@gmail.com',
+      first_name: 'Homer',
+      last_name: 'Simpson',
+      street_number: '99',
+      street: 'Avenue Donuts',
+      zip_code: '99800',
+      city: 'Springfield',
+      department: '99',
+      phone_number: '06 24 24 54 44',
+      licence: 'Permis F',
+      role: 1,
+      color: '#009432',
+      favorites: [8965, 11],
+      command: [
+        {
+          status: 'Envoyé',
+          id: 7845612,
+          booking_start: '26/08/2022',
+          booking_end: '29/08/2022',
+          quantity_leased: 1,
+          article: [{
+            name: 'Tonnelle',
+            article_number: '777',
+            slug: 'tonnelle_xl',
+            description: 'Une Tonnelle qui sert à tonneller, elle marche du tonnerre et vous pourez tonneller tout ce qui est sur votre chemin parole de tunellier',
+            length: '2 mètres',
+            width: '10 cm',
+            weight: '3 tonnes',
+            usefull_load: true,
+            color: 'bleu',
+            quantity_available: 4,
+            quantity_total: 10,
+            quantity_leased: 1,
+          }]
+        },
+        {
+          status: 'Envoyé',
+          id: 1222111,
+          booking_start: '14/08/2022',
+          booking_end: '19/08/2022',
+          quantity_leased: 3,
+          article: [{
+            name: 'Pommier',
+            article_number: '777',
+            slug: 'pommier',
+            description: 'Une Pomme qui sert à pommer, elle marche du pomme et vous pourez pommer tout ce qui est sur votre pomme parole de pommier',
+            length: '2 mètres',
+            width: '10 cm',
+            weight: '3 tonnes',
+            usefull_load: true,
+            color: 'rouge',
+            quantity_available: 4,
+            quantity_total: 10,
+            quantity_leased: 1,
+          }]
+        }
+      ]
+    },
+    {
       id: 123,
       password: 'pingpong',
       username: 'Karin',
@@ -56,8 +117,6 @@ const db = {
 /* Middlewares */
 // parse request body
 app.use(bodyParser.json());
-
-// app.use(cors(process.env.CORS_DOMAIN ?? '*'));
 
 // cors
 app.use((req, res, next) => {
@@ -124,6 +183,7 @@ app.post('/user/login', (req, res) => {
       role: user.role,
       color: user.color,
       favorites: user.favorites,
+      command: user.command,
     });
   }
   else {
